@@ -1,0 +1,45 @@
+---
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+
+const { href, class: className, activeItem, ...props } = Astro.props;
+---
+
+<a href={href} class:list={[className]} {...props}>
+    <slot />
+</a>
+<style>
+    a {
+        color: #555555;
+        border: 2px solid transparent;
+        border-left: none;
+        border-radius: 0;
+        border-right: none;
+        cursor: pointer;
+        gap: 0.5rem;
+        margin: 0 0.5rem;
+        padding: 0;
+    }
+
+    a:hover {
+        background: transparent;
+        text-decoration: none;
+    }
+
+    a, a:hover {
+        text-decoration: none;
+    }
+
+    a.active {
+        font-weight: 600;
+    }
+
+    a.active,
+    a:hover {
+        text-decoration: none;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+        text-decoration-color: #fbd143;
+    }
+</style>

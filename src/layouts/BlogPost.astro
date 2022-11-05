@@ -1,0 +1,141 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Datetime from "../components/DateTime.astro";
+import ButtonOutline from "../components/ButtonOutline.astro";
+import formatDatetime from "../utils/formatDateTime";
+
+export interface Props {
+    content: {
+        title: string;
+        description: string;
+        pubDate?: string;
+        updatedDate?: string;
+        heroImage?: string;
+        current?: string;
+    };
+}
+
+const {
+    content: { title, description, pubDate, updatedDate, heroImage, current },
+} = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
+
+    <body>
+        <Header current={current} />
+        <main>
+            <div class="container">
+                <div class="breadcrumbs-section">
+                    <a class="" onclick="history.back()">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            ><path
+                                d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
+                            ></path>
+                        </svg><span>Go back</span>
+                    </a>
+                </div>
+                <article class="post-content__article">
+                    <div class="post-content__top fade-in">
+                        <picture>
+                            <source srcset={`${heroImage}`} type="image/webp" />
+                            <img
+                                width="1200"
+                                height="630"
+                                class="post-content__img"
+                                loading="eager"
+                                src={`${heroImage}`}
+                                alt={title}
+                            />
+                        </picture>
+                        <Datetime
+                            datetime={pubDate}
+                            size="lg"
+                            className="my-2"
+                        />
+                        <h2 class="title">{title}</h2>
+                        <p>
+                            {
+                                updatedDate && (
+                                    <div>
+                                        Last updated on{" "}
+                                        <time>{formatDatetime(updatedDate)}</time>
+                                    </div>
+                                )
+                            }
+                        </p>
+                    </div>
+
+                    <div class="post-content__content">
+                        <slot />
+                    </div>
+                </article>
+				<ButtonOutline title="Return to the Blog" link={"/blog"} />
+            </div>
+        </main>
+        <Footer />
+
+        <style>
+            h1 {
+                font-weight: 800;
+                font-size: 50px;
+                line-height: 66px;
+                margin: 0;
+            }
+
+            .my-2 {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .post-content__content :global(p) {
+                font-size: 18px;
+                margin-top: 1.25em;
+                margin-bottom: 1.25em;
+            }
+
+            .breadcrumbs-section {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                padding-top: 5vh;
+            }
+            .breadcrumbs-section a {
+                display: flex;
+				align-items: center;
+                font-weight: 700;
+                font-size: 18px;
+                color: #555555;
+				cursor: pointer;
+                margin: 0;
+            }
+            .breadcrumbs-section svg {
+                display: inline-block;
+                width: 1.5rem;
+                height: 1.5rem;
+                fill: #555555;
+            }
+            .post-content__article {
+                padding: 2vh 0;
+            }
+            .post-content__content :global(img) {
+                height: auto;
+                width: 100%;
+            }
+            .post-content__date {
+                margin: 0 auto;
+                font-size: 18px;
+                font-style: italic;
+            }
+
+			.post-content__content :global(pre) {
+                background-color: #3e3e3e;
+            }
+        </style>
+    </body>
+</html>

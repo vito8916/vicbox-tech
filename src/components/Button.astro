@@ -1,0 +1,55 @@
+---
+export interface Props {
+    label: string;
+    title: string;
+    class: string;
+}
+
+const { label, title, class: className } = Astro.props;
+---
+
+<button class={className}>
+    {label}
+</button>
+
+<style>
+    .btn {
+        cursor: pointer;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.5;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        gap: 12px;
+        width: fit-content;
+        height: 50px;
+    }
+
+    .btn-solid {
+        background-color: #3a3a3a;
+    }
+
+    .btn-outline {
+        background-color: unset;
+        border: 1px solid #3a3a3a;
+    }
+
+    .btn-outline:hover {
+        text-decoration: none;
+        color: #f6f6f6;
+        background: #3a3a3a;
+        border: 1px solid #3a3a3a;
+    }
+
+    .btn.dark-grey {
+        color: #f6f6f6;
+        background: #3a3a3a;
+        border: 1px solid #3a3a3a;
+    }
+</style>

@@ -1,0 +1,38 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const snippets = (await Astro.glob("./snippets/**/*.{md,mdx}")).sort(
+    (a, b) =>
+        new Date(b.frontmatter.pubDate).valueOf() -
+        new Date(a.frontmatter.pubDate).valueOf()
+);
+---
+
+<PageLayout currentPage="snippets">
+    <section class="pt-2">
+        <h1 class="section-title">Code Snippets</h1>
+        <div class="snippet-list">
+            {
+                (
+                    <ul>
+                        {snippets.map((snippet) => (
+                            <li>
+                                <a href={snippet.url}>
+                                    {snippet.frontmatter.title}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                )
+            }
+        </div>
+    </section>
+</PageLayout>
+
+<style>
+    .section-title {
+        padding: 2rem 0;
+        font-weight: 700;
+    }
+</style>

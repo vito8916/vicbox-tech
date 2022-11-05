@@ -1,0 +1,98 @@
+---
+const { post } = Astro.props
+---
+
+<article class="post-item hover-animate">
+    <a href={post.url}>
+        <picture>
+            <source srcset={`${post.frontmatter.thumb}`} type="image/webp" />
+            <img
+                width="250"
+                height="350"
+                class="post-thumb"
+                loading="eager"
+                src={`${post.frontmatter.heroImage}`}
+                alt={post.frontmatter.title}
+            />
+        </picture>
+    <!-- <img
+        src={post.frontmatter.thumb}
+        alt=""
+        class="post-thumb"
+    /> -->
+    <div class="post-item__content">
+        <h4 class="post-title">{post.frontmatter.title}</h4>
+        <time
+            class="post-date"
+            datetime={post.frontmatter.pubDate}
+        >
+            {new Date(
+                post.frontmatter.pubDate
+            ).toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+            })}
+        </time>
+    </div>
+    </a>
+</article>
+
+<style>
+    .post-item {
+		color: #f6f6f6;
+		position: relative;
+		min-width: 0;
+        width: 100%;
+        height: 350px;
+		border-radius: 0;
+        border: 2px solid #222222;
+		word-wrap: break-word;
+        overflow: hidden;
+    }
+
+	.post-item a {
+		margin: 0;
+	}
+
+    .post-item::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient(0deg, rgba(81, 81, 81, 0.2), rgba(81, 81, 81, 0.2));
+        z-index: 1;
+    }
+    .post-thumb {
+        width: 100%;
+        height: 100%;
+        filter: grayscale(1);
+        object-fit: cover;
+    }
+    .post-item__content{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        left: 0;
+        top: 0;
+        z-index: 1;
+    }
+    .post-title {
+        width: 1005;
+        font-weight: 700;
+        color: #f6f6f6;
+    }
+    .post-date {
+		color: #f6f6f6;
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.2);
+        width: 100%;
+    }
+</style>

@@ -1,0 +1,54 @@
+---
+import Hero from "../components/Hero.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import BlogPostListPreview from "../components/BlogPostListPreview.astro";
+import ButtonOutline from "../components/ButtonOutline.astro";
+import Button from "../components/Button.astro";
+
+const allPost = await Astro.glob("./blog/**/*.{md,mdx}");
+const latestPosts = allPost.sort(
+    (a, b) =>
+        new Date(b.frontmatter.pubDate).valueOf() -
+        new Date(a.frontmatter.pubDate).valueOf()
+);
+---
+
+<PageLayout currentPage="home">
+    <Hero />
+    <section class="section latest__posts">
+        <div class="section__title">
+            <h2 class="title">Latest Posts</h2>
+            <hr class="divider" />
+        </div>
+        {
+            latestPosts
+                .filter((i, index) => index < 4)
+                .map((post, index) => (
+                    <BlogPostListPreview
+                        thumb={post.frontmatter.thumb}
+                        date={post.frontmatter.pubDate}
+                        title={post.frontmatter.title}
+                        description={post.frontmatter.description}
+                        link={post.url}
+                    />
+                ))
+        }
+    </section>
+    <section class="section load-more">
+        <a href="/blog">
+            <Button
+                class="btn btn-solid dark-grey"
+                label="View All Blog"
+                title="view all blog button"
+            />
+        </a>
+    </section>
+</PageLayout>
+
+<style>
+    .load-more {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+    }
+</style>
