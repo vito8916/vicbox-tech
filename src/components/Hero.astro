@@ -35,12 +35,9 @@
             rgba(231, 231, 231, 0) 90.66%
         );
     }
-    h1 {
+    .hero-content h1 {
         color: #555555;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 64px;
-        line-height: 1.2;
+        font-weight: 700;
         margin: 0;
     }
     .hero-description {
@@ -50,11 +47,15 @@
 
     @media (max-width: 768px) {
         .hero {
-        padding: 24px 0px;
-        gap: 12px;
-    }
-        h1 {
-            font-size: 44px;
+            padding: 24px 0px;
+            gap: 12px;
+        }
+        .hero-content h1 {
+            font-size: 2.369rem;
+        }
+        .hero-description {
+            margin: 0;
+            font-size: 1.2rem;
         }
     }
 </style>
