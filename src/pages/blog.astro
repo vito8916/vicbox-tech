@@ -18,17 +18,13 @@ const posts = (await Astro.glob("./blog/**/*.{md,mdx}")).sort(
     <section class="pt-2">
         <h1 class="section-title">All Articles</h1>
         <div class="blog__post-grid-preview">
-            {
-                posts.map((post) => (
-                    <BlogPostGridPreview post={post}/>
-                ))
-            }
+            {posts.map((post) => <BlogPostGridPreview post={post} />)}
         </div>
     </section>
 </PageLayout>
 
 <style>
-	.section-title {
+    .section-title {
         padding: 2rem 0;
         font-weight: 700;
     }
@@ -42,4 +38,12 @@ const posts = (await Astro.glob("./blog/**/*.{md,mdx}")).sort(
         gap: 24px;
     }
 
+    @media (max-width: 768px) {
+        .section-title {
+            padding: 0;
+            font-weight: 700;
+            margin-top: 0;
+            font-size: clamp(2.67rem, 2.07rem + 3vw, 4.21rem);
+        }
+    }
 </style>
