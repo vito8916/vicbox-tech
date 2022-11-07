@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://www.vicbox.tech/',
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		syntaxHighlight: 'prism',
