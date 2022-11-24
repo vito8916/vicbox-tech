@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/PageLayout.astro"
+layout: "../layouts/BlogPost.astro"
 title: "About Me"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "2022/11/04"
