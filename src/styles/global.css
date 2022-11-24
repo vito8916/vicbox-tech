@@ -141,8 +141,8 @@ html {
 body {
     position: relative;
     min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
     background-color: #f6f6f6;
     margin: 0;
     padding: 0;
