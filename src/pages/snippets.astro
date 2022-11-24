@@ -1,5 +1,6 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+import SnippetListPreview from "../components/SnippetListPreview.astro";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const snippets = (await Astro.glob("./snippets/**/*.{md,mdx}")).sort(
@@ -14,25 +15,40 @@ const snippets = (await Astro.glob("./snippets/**/*.{md,mdx}")).sort(
         <h1 class="section-title">Code Snippets</h1>
         <div class="snippet-list">
             {
-                (
-                    <ul>
-                        {snippets.map((snippet) => (
-                            <li>
-                                <a href={snippet.url}>
-                                    {snippet.frontmatter.title}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                )
+                snippets.map((snippet) => (
+                    <SnippetListPreview
+                        tag={snippet.frontmatter.tag}
+                        url={snippet.url}
+                        title={snippet.frontmatter.title}
+                    />
+                ))
             }
         </div>
     </section>
 </PageLayout>
 
 <style>
+    section.pt-2 {
+        padding-top: 0;
+    }
     .section-title {
         padding: 2rem 0;
         font-weight: 700;
+    }
+    .snippet-list {
+        display: grid;
+        gap: 12px;
+    }
+    @media screen and (min-width: 700px) {
+        .snippet-list {
+            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media screen and (min-width: 1060px) {
+        .snippet-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 </style>

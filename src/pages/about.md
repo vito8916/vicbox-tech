@@ -1,10 +1,10 @@
 ---
-layout: "../layouts/BlogPost.astro"
+layout: "../layouts/PageLayout.astro"
 title: "About Me"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "2022/11/04"
 updatedDate: "2022/11/04"
-heroImage: "/images/vicbox_tech_horizantal_logo.svg"
+heroImage: ""
 current: "about"
 ---
 

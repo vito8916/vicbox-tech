@@ -1,10 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Datetime from "../components/DateTime.astro";
-import ButtonOutline from "../components/ButtonOutline.astro";
-import formatDatetime from "../utils/formatDateTime";
+import BottomNavigationMenu from "../components/BottomNavigationMenu.astro";
 
 export interface Props {
     content: {
@@ -27,8 +24,9 @@ const {
         <BaseHead title={title} description={description} />
     </head>
 
-    <body>
-        <Header current={current} />
+    <>
+        <!-- <Header current={current} /> -->
+        <BottomNavigationMenu />
         <main>
             <div class="container">
                 <div class="breadcrumbs-section">
@@ -41,6 +39,9 @@ const {
                     </a>
                 </div>
                 <article class="post-content__article my-2">
+                    <div class="post-content__top fade-in">
+                        <h1 class="title">{title}</h1>
+                    </div>
                     <slot />
                 </article>
             </div>
@@ -86,11 +87,6 @@ const {
                 fill: #555555;
             }
 
-            @media (max-width: 768px) {
-                .post-content__top .title {
-                    font-size: 2.369rem;
-                }
-            }
         </style>
     </body>
 </html>

@@ -1,6 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
+import BottomNavigationMenu from "../components/BottomNavigationMenu.astro";
 import Footer from "../components/Footer.astro";
 import Datetime from "../components/DateTime.astro";
 import ButtonOutline from "../components/ButtonOutline.astro";
@@ -28,7 +28,8 @@ const {
     </head>
 
     <body>
-        <Header current={current} />
+        <BottomNavigationMenu current=''  />
+
         <main>
             <div class="container">
                 <div class="breadcrumbs-section">
