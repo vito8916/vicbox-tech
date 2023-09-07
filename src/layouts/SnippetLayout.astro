@@ -4,89 +4,80 @@ import Footer from "../components/Footer.astro";
 import BottomNavigationMenu from "../components/BottomNavigationMenu.astro";
 
 export interface Props {
-    content: {
-        title: string;
-        description: string;
-        pubDate?: string;
-        updatedDate?: string;
-        heroImage?: string;
-        current?: string;
-    };
+    title: string;
+    description: string;
+    pubDate?: string;
 }
 
-const {
-    content: { title, description, pubDate, updatedDate, heroImage, current },
-} = Astro.props;
+const {title, description, pubDate} = Astro.props;
 ---
-
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <BaseHead title={title} description={description} />
-    </head>
+<head>
+    <BaseHead title={title} description={description}/>
+</head>
 
-    <>
-        <!-- <Header current={current} /> -->
-        <BottomNavigationMenu />
-        <main>
-            <div class="container">
-                <div class="breadcrumbs-section">
-                    <a class="" onclick="history.back()">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            ><path
-                                d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-                            ></path>
-                        </svg><span>Go back</span>
-                    </a>
-                </div>
-                <article class="post-content__article my-2">
-                    <div class="post-content__top fade-in">
-                        <h1 class="title">{title}</h1>
-                    </div>
-                    <slot />
-                </article>
+<body>
+<!-- <Header current={current} /> -->
+<BottomNavigationMenu/>
+<main>
+    <div class="container">
+        <div class="breadcrumbs-section">
+            <a class="" onclick="history.back()">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                            d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
+                    ></path>
+                </svg>
+                <span>Go back</span>
+            </a>
+        </div>
+        <article class="post-content__article my-2">
+            <div class="post-content__top fade-in">
+                <h1 class="title">{title}</h1>
             </div>
-        </main>
-        <Footer />
-
-        <style>
-        
-            h2 {
-                font-weight: 700;
-            }
-
-            .my-2 {
-                margin-top: 0.5rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .post-content__content :global(p) {
-                font-size: 18px;
-                margin-top: 1.25em;
-                margin-bottom: 1.25em;
-            }
-
-            .breadcrumbs-section {
-                width: 100%;
-                display: flex;
-                justify-content: flex-start;
-                padding-top: 5vh;
-            }
-            .breadcrumbs-section a {
-                display: flex;
-                align-items: center;
-                font-weight: 700;
-                font-size: 18px;
-                color: #555555;
-                cursor: pointer;
-                margin: 0;
-            }
-            .breadcrumbs-section svg {
-                display: inline-block;
-                width: 1.5rem;
-                height: 1.5rem;
-                fill: #555555;
-            }
-
-        </style>
-    </body>
+            <slot/>
+        </article>
+    </div>
+</main>
+<Footer/>
+</body>
 </html>
+
+<style>
+    h2 {
+        font-weight: 700;
+    }
+    .my-2 {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .post-content__content :global(p) {
+        font-size: 18px;
+        margin-top: 1.25em;
+        margin-bottom: 1.25em;
+    }
+    .breadcrumbs-section {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 5vh;
+    }
+    .breadcrumbs-section a {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        font-size: 18px;
+        color: #555555;
+        cursor: pointer;
+        margin: 0;
+    }
+    .breadcrumbs-section svg {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: #555555;
+    }
+</style>
+

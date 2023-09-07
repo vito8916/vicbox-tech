@@ -1,0 +1,29 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import BottomNavigationMenu from "../components/BottomNavigationMenu.astro";
+
+export interface Props {
+    title: string;
+    description: string;
+    pubDate?: string;
+    updatedDate?: string;
+    heroImage?: string;
+    current?: string;
+}
+
+const {frontmatter: {title, description, pubDate, updatedDate, heroImage, current}} = Astro.props;
+---
+
+<html lang="en">
+<head>
+    <BaseHead title={title} description={description}/>
+</head>
+<body>
+<BottomNavigationMenu/>
+<slot/>
+</body>
+</html>
+
+<style>
+
+</style>

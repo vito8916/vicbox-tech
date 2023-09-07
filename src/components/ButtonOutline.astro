@@ -2,7 +2,7 @@
 const {title, link} = Astro.props
 ---
 
-<a class="btn__outline" href={link} aria-label="read more button">
+<a class="btn__outline" href={`${link}/`} aria-label="read more button">
     {title}
 </a>
 
@@ -14,7 +14,7 @@ const {title, link} = Astro.props
         line-height: 1.5;
         text-align: center;
         text-decoration: none;
-        color: #3a3a3a;
+        color: var(--color-text);
         display: flex;
         flex-direction: row;
         justify-content: center;

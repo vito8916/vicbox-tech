@@ -1,15 +1,25 @@
 ---
+import { getCollection, CollectionEntry } from "astro:content";
+
+//Components import
 import Hero from "../components/Hero.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import BlogPostListPreview from "../components/BlogPostListPreview.astro";
 import ButtonOutline from "../components/ButtonOutline.astro";
 import Button from "../components/Button.astro";
 
-const allPost = await Astro.glob("./blog/**/*.{md,mdx}");
-const latestPosts = allPost.sort(
+//const allPost = await Astro.glob("./blog/**/*.{md,mdx}");
+/* const latestPosts = allPost.sort(
     (a, b) =>
         new Date(b.frontmatter.pubDate).valueOf() -
         new Date(a.frontmatter.pubDate).valueOf()
+); */
+
+const allPost = await getCollection("blog");
+const latestPosts: CollectionEntry<"blog">[] = allPost.sort(
+    (a, b) =>
+        new Date(b.data.pubDate).valueOf() -
+        new Date(a.data.pubDate).valueOf()
 );
 ---
 
@@ -25,11 +35,8 @@ const latestPosts = allPost.sort(
                 .filter((i, index) => index < 4)
                 .map((post, index) => (
                     <BlogPostListPreview
-                        thumb={post.frontmatter.thumb}
-                        date={post.frontmatter.pubDate}
-                        title={post.frontmatter.title}
-                        description={post.frontmatter.description}
-                        link={post.url}
+                        data={post.data} url={post.slug}
+                        link={post.slug}
                     />
                 ))
         }
@@ -50,5 +57,6 @@ const latestPosts = allPost.sort(
         display: flex;
         justify-content: center;
         margin-top: 5rem;
+        color: var(--color-text);
     }
 </style>

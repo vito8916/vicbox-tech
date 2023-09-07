@@ -1,17 +1,19 @@
 ---
-layout: "../../layouts/BlogPost.astro"
-title: "Enable Dark Mode In Astro Build Js. "
+title: Enable Dark Mode In Astro Build Js.
 description:
   In this tutorial we'll learn how to implement a dark and light mode in Astro JS using CSS variables.
 pubDate: 2022/11/07
 #updatedDate: "2022/11/04"
-thumb: "/images/thumb.jpg"
-heroImage: "/images/thumb.jpg"
-
+thumb: {
+  src: "../../images/the-girl-in-the-woods.jpg",
+  alt: "A picture of a coder",
+  }
+heroImage: {
+  src: "../../images/thumb.jpg",
+  alt: "A picture of a coder",
+  }
 author: Victor Alvarado
-slug: enable-dar-mode-in-astro-js
-tags:
-  - Personal
+category: Astro
 ---
 
 <p style="font-size: 1.15rem; margin-bottom: 1rem;"> The use of a dark mode has grown in popularity. Many large websites and applications are developing their own version of it which is often done using CSS variables.</p>

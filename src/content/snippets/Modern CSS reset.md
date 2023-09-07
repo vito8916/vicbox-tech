@@ -1,11 +1,9 @@
 ---
-layout: "../../../layouts/SnippetLayout.astro"
 title: 'Modern CSS Reset'
 description: A Modern CSS Reset. A reset of sensible defaults
 pubDate: "2022/11/04"
 updatedDate: "2022/11/04"
-tag:
-  - css
+tags: ["css", "reset"]
 ---
 
 ```css

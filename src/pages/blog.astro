@@ -2,13 +2,11 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import PageLayout from "../layouts/PageLayout.astro";
 import BlogPostGridPreview from "../components/BlogPostGridPreview.astro";
+import {getCollection} from "astro:content";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/**/*.{md,mdx}")).sort(
-    (a, b) =>
-        new Date(b.frontmatter.pubDate).valueOf() -
-        new Date(a.frontmatter.pubDate).valueOf()
-);
+// Content Fetching: List four most recent work projects
+const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
 <PageLayout currentPage="blog">
@@ -27,11 +25,11 @@ const posts = (await Astro.glob("./blog/**/*.{md,mdx}")).sort(
     }
     .blog__post-grid-preview {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(215px, 220px));
         align-items: center;
         /*grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));*/
         /* align-items: center; */
-        padding: 24px 0px;
+        padding: 24px 0;
         gap: 24px;
     }
 

@@ -1,13 +1,11 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import SnippetListPreview from "../components/SnippetListPreview.astro";
+import {getCollection} from "astro:content";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const snippets = (await Astro.glob("./snippets/**/*.{md,mdx}")).sort(
-    (a, b) =>
-        new Date(b.frontmatter.pubDate).valueOf() -
-        new Date(a.frontmatter.pubDate).valueOf()
-);
+// Content Fetching: List four most recent work projects
+const snippets = (await getCollection('snippets')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
 <PageLayout currentPage="snippets">
@@ -17,9 +15,9 @@ const snippets = (await Astro.glob("./snippets/**/*.{md,mdx}")).sort(
             {
                 snippets.map((snippet) => (
                     <SnippetListPreview
-                        tag={snippet.frontmatter.tag}
-                        url={snippet.url}
-                        title={snippet.frontmatter.title}
+                        tag={snippet.data.tags}
+                        url={`/snippets/${snippet.slug}`}
+                        title={snippet.data.title}
                     />
                 ))
             }

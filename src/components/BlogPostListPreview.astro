@@ -1,17 +1,29 @@
 ---
+// library imports
+import { Image } from '@astrojs/image/components';
 import ButtonOutline from "./ButtonOutline.astro";
 
-const { thumb, date, title, description, link } = Astro.props;
+const { data, url } = Astro.props;
+const { title, pubDate, author, image, description, category, thumb, link } = data;
 ---
 
 <article class="blog__post-list-preview">
     <div class="post__thumb-img">
-        <img src={thumb} alt={`Illustrative image to the blog post: ${title}`}/>
+        <Image
+            src={thumb.src}
+            alt={thumb.alt}
+            width="220"
+            height="320"
+            format="webp"
+            fit="cover"
+            quality={100}
+            aspectRatio="16:9"
+            />
     </div>
     <div class="post__info">
-        <time class="post__date" datetime={date}>
+        <time class="post__date" datetime={pubDate}>
             {
-                new Date(date).toLocaleDateString("en-us", {
+                new Date(pubDate).toLocaleDateString("en-us", {
                     year: "numeric",
                     month: "short",
                     day: "numeric",
@@ -24,35 +36,37 @@ const { thumb, date, title, description, link } = Astro.props;
         <p class="post__description">
             {description}
         </p>
-        <ButtonOutline title="Read More" link={link} />
+        <ButtonOutline title="Read More" link={`/blog/${url}`} />
     </div>
 </article>
 
 <style>
     .blog__post-list-preview {
         display: grid;
-        grid-template-columns: 1fr 1.5fr;
+        grid-template-columns: 220px 1.5fr;
         align-items: center;
         /*grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));*/
         /* align-items: center; */
-        padding: 24px 0px;
+        padding: 24px 0;
         gap: 24px;
     }
     .post__thumb-img {
         width: 100%;
-        height: 280px;
+        height: 320px;
+        border: 1px solid var(--border-book-color);
+        border-radius: 4px;
     }
     .post__thumb-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: grayscale(1);
+        border-radius: 4px;
     }
     .post__info {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 0px;
+        padding: 0;
         gap: 12px;
     }
 
@@ -60,14 +74,14 @@ const { thumb, date, title, description, link } = Astro.props;
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
-        color: #555555;
+        color: var(--color-text);
     }
 
     .post__info .post__title {
         font-style: normal;
         font-weight: 700;
         font-size: 27px;
-        color: #555555;
+        color: var(--bold-text);
         margin: 0;
     }
 
@@ -75,7 +89,7 @@ const { thumb, date, title, description, link } = Astro.props;
         font-style: normal;
         font-weight: 400;
         font-size: clamp(1rem, 1.1rem,1.33rem);
-        color: #555555;
+        color: var(--color-text);
         margin: 0;
     }
 
