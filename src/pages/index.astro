@@ -5,15 +5,7 @@ import { getCollection, CollectionEntry } from "astro:content";
 import Hero from "../components/Hero.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import BlogPostListPreview from "../components/BlogPostListPreview.astro";
-import ButtonOutline from "../components/ButtonOutline.astro";
 import Button from "../components/Button.astro";
-
-//const allPost = await Astro.glob("./blog/**/*.{md,mdx}");
-/* const latestPosts = allPost.sort(
-    (a, b) =>
-        new Date(b.frontmatter.pubDate).valueOf() -
-        new Date(a.frontmatter.pubDate).valueOf()
-); */
 
 const allPost = await getCollection("blog");
 const latestPosts: CollectionEntry<"blog">[] = allPost.sort(
@@ -33,7 +25,7 @@ const latestPosts: CollectionEntry<"blog">[] = allPost.sort(
         {
             latestPosts
                 .filter((i, index) => index < 4)
-                .map((post, index) => (
+                .map((post) => (
                     <BlogPostListPreview
                         data={post.data} url={post.slug}
                         link={post.slug}

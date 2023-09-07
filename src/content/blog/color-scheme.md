@@ -129,7 +129,6 @@ html[data-theme="dark"] {
 
 ```css
 html[data-theme="dark"] {
-  --color-fill: 16, 23, 42; /* higher contrast bgColor */
   --color-fill: 33, 39, 55;
   --color-text-base: 234, 237, 243;
   --color-accent: 255, 107, 1;
