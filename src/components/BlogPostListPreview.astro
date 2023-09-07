@@ -81,7 +81,7 @@ const { title, pubDate, author, image, description, category, thumb, link } = da
         font-style: normal;
         font-weight: 700;
         font-size: 27px;
-        color: var(--bold-text);
+        color: var(--color-text);
         margin: 0;
     }
 
@@ -96,6 +96,12 @@ const { title, pubDate, author, image, description, category, thumb, link } = da
     @media (max-width: 768px) {
         .blog__post-list-preview {
             grid-template-columns: 1fr;
+        }
+        .post__thumb-img {
+            width: 160px;
+            height: 240px;
+            border: 1px solid var(--border-book-color);
+            border-radius: 4px;
         }
     }
 </style>
