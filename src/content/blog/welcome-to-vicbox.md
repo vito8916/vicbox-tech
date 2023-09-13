@@ -1,7 +1,7 @@
 ---
 title: Welcome to VicBox.tech!.
 description: This is a kindly welcoming to my blog, VicBox.tech.
-pubDate: 2023/13/09
+pubDate: 2023/09/13
 #updatedDate: "2022/11/04"
 thumb: {
   src: "../../images/welcome-to-vicbox-thumb-1.jpg",
