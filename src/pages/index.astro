@@ -23,13 +23,14 @@ const latestPosts: CollectionEntry<"blog">[] = allPost.sort(
             <hr class="divider" />
         </div>
         {
+            latestPosts < 1 ? "No posts found" :
             latestPosts
                 .filter((i, index) => index < 4)
                 .map((post) => (
-                    <BlogPostListPreview
-                        data={post.data} url={post.slug}
-                        link={post.slug}
-                    />
+                        <BlogPostListPreview
+                                data={post.data} url={post.slug}
+                                link={post.slug}
+                        />
                 ))
         }
     </section>
