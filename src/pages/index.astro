@@ -1,5 +1,5 @@
 ---
-import { getCollection, CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 //Components import
 import Hero from "../components/Hero.astro";
@@ -7,12 +7,16 @@ import PageLayout from "../layouts/PageLayout.astro";
 import BlogPostListPreview from "../components/BlogPostListPreview.astro";
 import Button from "../components/Button.astro";
 
-const allPost = await getCollection("blog");
-const latestPosts: CollectionEntry<"blog">[] = allPost.sort(
+//const allPost = await getCollection("blog");
+
+/*const latestPosts: CollectionEntry<"blog">[] = allPost.sort(
     (a, b) =>
         new Date(b.data.pubDate).valueOf() -
         new Date(a.data.pubDate).valueOf()
-);
+);*/
+
+const latestPosts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
 <PageLayout currentPage="home">
