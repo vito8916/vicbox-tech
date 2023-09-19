@@ -1,5 +1,7 @@
 ---
 import SocialMediaLinks from "./SocialMediaLinks.astro";
+import Isotipo from "./Isotipo.astro";
+import Logo from "./Logo.astro";
 const today = new Date();
 const menu = [
     {
@@ -19,12 +21,9 @@ const menu = [
 
 <footer>
     <div class="container">
-        <img
-            class="footer__logo color"
-            src="/images/vicbox_tech _logo_yellow.svg"
-            alt="Logotipo of the VicBox.Tech Blog"
-            width="70"
-        />
+        <div class="footer__logo">
+            <Isotipo width="80" height="50"/>
+        </div>
         <section>
             <nav>
                 <ul class="stack--list" role="list">

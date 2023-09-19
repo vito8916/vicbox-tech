@@ -4,7 +4,10 @@ title: "About Me"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "2022/11/04"
 updatedDate: "2022/11/04"
-heroImage: ""
+heroImage: {
+  src: "../../images/logo-vbx.svg",
+  alt: "A picture of a coder",
+}
 current: "about"
 ---
 
