@@ -8,39 +8,44 @@ const { title, pubDate, author, image, description, category, thumb, link } = da
 ---
 
 <article class="blog__post-list-preview">
-    <div class="post__thumb-img">
-        <Image
-            src={thumb.src}
-            alt={thumb.alt}
-            width="201"
-            height="320"
-            format="webp"
-            fit="cover"
-            quality={100}
-            aspectRatio="16:9"
+    <a class="" href={`/blog/${url}`}>
+        <div class="post__thumb-img">
+            <Image
+                    src={thumb.src}
+                    alt={thumb.alt}
+                    width="201"
+                    height="320"
+                    format="webp"
+                    fit="cover"
+                    quality={100}
+                    aspectRatio="16:9"
             />
-    </div>
-    <div class="post__info">
-        <time class="post__date" datetime={pubDate}>
-            {
-                new Date(pubDate).toLocaleDateString("en-us", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                })
-            }
-        </time>
-        <h2 class="post__title">
-            {title}
-        </h2>
-        <p class="post__description">
-            {description}
-        </p>
-        <ButtonOutline title="Read More" link={`/blog/${url}`} />
-    </div>
+        </div>
+        <div class="post__info">
+            <time class="post__date" datetime={pubDate}>
+                {
+                    new Date(pubDate).toLocaleDateString("en-us", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                    })
+                }
+            </time>
+            <h2 class="post__title">
+                {title}
+            </h2>
+            <p class="post__description">
+                {description}
+            </p>
+            <ButtonOutline title="Read More" link={`/blog/${url}`} />
+        </div>
+    </a>
 </article>
 
 <style>
+    a {
+        text-decoration: none;
+    }
     .blog__post-list-preview {
         display: grid;
         grid-template-columns: 201px 1.5fr;
