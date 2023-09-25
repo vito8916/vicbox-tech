@@ -55,19 +55,19 @@ const {frontmatter: {title, description, pubDate, updatedDate, heroImage, curren
                         size="lg"
                         className="my-2"
                 />
-                <h1 class="title">{title}</h1>
-                <p>
-                    {
-                        updatedDate && (
-                                    <div>
-                                        Last updated on{" "}
-                                        <time>
-                                            {formatDatetime(updatedDate)}
-                                        </time>
-                                    </div>
-                        )
-                    }
-                </p>
+                <h1 class="post-content__title">{title}</h1>
+
+                {
+                    updatedDate && (
+                                <div class="post-content__date">
+                                    Last updated on{" "}
+                                    <time>
+                                        {formatDatetime(updatedDate)}
+                                    </time>
+                                </div>
+                    )
+                }
+
             </div>
 
             <div class="post-content__content">
@@ -81,51 +81,74 @@ const {frontmatter: {title, description, pubDate, updatedDate, heroImage, curren
 </body>
 </html>
 <style>
+    svg {
+        fill: var(--fill-color-svg);
+    }
+
     .my-2 {
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
     }
+
     .post-content__content :global(p) {
         font-size: 18px;
         margin-top: 1.25em;
         margin-bottom: 1.25em;
     }
+
     .breadcrumbs-section {
         width: 100%;
         display: flex;
         justify-content: flex-start;
         padding-top: 5vh;
     }
+
     .breadcrumbs-section a {
         display: flex;
         align-items: center;
         font-weight: 700;
         font-size: 18px;
-        color: #555555;
+        color: var(--color-text);
         cursor: pointer;
         margin: 0;
     }
+
     .breadcrumbs-section svg {
         display: inline-block;
         width: 1.5rem;
         height: 1.5rem;
-        fill: #555555;
+        fill: var(--color-text);
     }
+
     .post-content__article {
         padding: 2vh 0;
     }
+
     .post-content__content :global(img) {
         height: auto;
         width: 100%;
     }
+
+    .post-content__title {
+        color: var(--section-title-title);
+    }
+
     .post-content__date {
+        color: var(--color-text);
         margin: 0 auto;
         font-size: 18px;
         font-style: italic;
     }
+
     .post-content__content :global(pre) {
+        color: var(--color-text);
         background-color: #3e3e3e;
     }
+
+    .post-content__content {
+        color: var(--color-text);
+    }
+
     @media (max-width: 768px) {
         .post-content__top .title {
             font-size: 2.369rem;

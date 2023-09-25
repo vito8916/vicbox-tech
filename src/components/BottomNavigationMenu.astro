@@ -38,7 +38,6 @@ const mainNavItems = [
 <header class="header--menu" id="headerMenu">
     <nav class="nav nav--container">
         <Brand />
-
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 {
@@ -62,7 +61,6 @@ const mainNavItems = [
                 }
             </ul>
         </div>
-
         <ThemeChange />
     </nav>
 </header>
@@ -98,7 +96,7 @@ const mainNavItems = [
         width: 100%;
         background-color: var(--nav-container-color);
         z-index: var(--z-fixed);
-        transition: 0.4s;
+        /*transition: 0.4s;*/
     }
 
     /*=============== NAV ===============*/
@@ -123,7 +121,7 @@ const mainNavItems = [
             display: grid;
             align-content: center;
             border-radius: 0;
-            transition: 0.4s;
+            /*transition: 0.4s;*/
         }
     }
 
@@ -201,7 +199,7 @@ const mainNavItems = [
             /* display: block; */ /* Minimalist design, visible labels */
         }
         .nav__link {
-            color: #555555;
+            color: var(--color-text);
         }
         .nav__link:hover {
             font-weight: 700;

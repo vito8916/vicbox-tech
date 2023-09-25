@@ -126,9 +126,9 @@
     }
 </style>
 
-<script>
+<script is:inline>
     // Get the theme toggle input
-    const themeToggle = document.querySelector('#light-dark-switcher') as HTMLInputElement | null;
+    const themeToggle = document.querySelector('#light-dark-switcher');
 
     // Get the current theme from local storage
     const currentTheme = localStorage.getItem("theme");

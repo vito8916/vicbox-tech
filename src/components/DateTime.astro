@@ -23,6 +23,7 @@ const { datetime, size = "sm" } = Astro.props;
 
 <style>
     .date-time {
+        color: var(--color-text);
         display: flex;
         align-items: center;
     }
@@ -44,6 +45,6 @@ const { datetime, size = "sm" } = Astro.props;
         display: inline-block;
         width: 1.5rem;
         height: 1.5rem;
-        fill: #555555
+        fill: var(--color-text);
     }
 </style>
