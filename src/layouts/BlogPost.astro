@@ -20,7 +20,7 @@ const {frontmatter: {title, description, pubDate, updatedDate, heroImage, curren
 
 <html lang="en">
 <head>
-    <BaseHead title={title} description={description} image={thumb.src} />
+    <BaseHead title={title} description={description} image={thumb.src ?? heroImage.src} />
 </head>
 <body>
 <BottomNavigationMenu current=''/>
