@@ -2,6 +2,7 @@
 import SocialMediaLinks from "./SocialMediaLinks.astro";
 import Isotipo from "./Isotipo.astro";
 import Logo from "./Logo.astro";
+import Brand from "./Brand.astro";
 const today = new Date();
 const menu = [
     {
@@ -22,7 +23,7 @@ const menu = [
 <footer>
     <div class="container">
         <div class="footer__logo">
-            <Isotipo width="80" height="50"/>
+            <Brand />
         </div>
         <section>
             <nav>
@@ -61,6 +62,8 @@ const menu = [
         padding: 64px 0;
     }
     .footer__logo {
+        display: flex;
+        justify-content: center;
         margin-bottom: 1rem;
     }
 

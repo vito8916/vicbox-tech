@@ -3,6 +3,7 @@
  */import ThemeChange from "./ThemeChange.astro";
 import Brand from "./Brand.astro";
 import HeaderLink from "./HeaderLink.astro";
+import Isotipo from "./Isotipo.astro";
 
 const { current } = Astro.props;
 
@@ -37,7 +38,7 @@ const mainNavItems = [
 
 <header class="header--menu" id="headerMenu">
     <nav class="nav nav--container">
-        <Brand />
+
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 {
@@ -61,6 +62,10 @@ const mainNavItems = [
                 }
             </ul>
         </div>
+        <div class="logo__brand-container">
+            <Isotipo width="35" height="35"/>
+        </div>
+        <!--<Brand />-->
         <ThemeChange />
     </nav>
 </header>
@@ -102,10 +107,21 @@ const mainNavItems = [
     /*=============== NAV ===============*/
     .nav {
         height: var(--header-height);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: grid;
         line-height: 1.2;
+    }
+    .nav {
+        grid-template-columns: 40px 1fr;
+    }
+    .nav__menu {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .logo__brand-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     @media screen and (max-width: 767px) {
@@ -119,6 +135,7 @@ const mainNavItems = [
             height: 4rem;
             padding: 0 1rem;
             display: grid;
+            justify-content: normal;
             align-content: center;
             border-radius: 0;
             /*transition: 0.4s;*/
@@ -177,7 +194,7 @@ const mainNavItems = [
     @media screen and (min-width: 576px) {
         .nav__list {
             justify-content: center;
-            column-gap: 3rem;
+            column-gap: 1rem;
         }
     }
 
@@ -187,6 +204,7 @@ const mainNavItems = [
         }
         .nav {
             height: calc(var(--header-height) + 1.5rem); /* 4.5rem */
+            grid-template-columns: 1fr 120px 1fr;
         }
         .nav__img {
             display: none;
