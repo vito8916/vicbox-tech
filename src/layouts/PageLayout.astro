@@ -2,23 +2,21 @@
 import BaseHead from '../components/BaseHead.astro';
 import BottomNavigationMenu from "../components/BottomNavigationMenu.astro";
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import {SITE_TITLE, SITE_DESCRIPTION} from '../config';
 const {currentPage} = Astro.props
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <BottomNavigationMenu current={currentPage} title={SITE_TITLE} />
-        <!-- <Header current={currentPage} title={SITE_TITLE} /> -->
-        <main>
-            <div class="container">
-                <slot/>
-            </div>
-        </main>
-    </body>
-    <Footer />
+<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
+<body>
+<BottomNavigationMenu current={currentPage} title={SITE_TITLE}/>
+<!-- <Header current={currentPage} title={SITE_TITLE} /> -->
+<main>
+    <div class="container">
+        <slot/>
+    </div>
+</main>
+</body>
+<Footer/>
 </html>

@@ -13,10 +13,7 @@ const {title, description, pubDate} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <BaseHead title={title} description={description}/>
-</head>
-
+<BaseHead title={title} description={description}/>
 <body>
 <!-- <Header current={current} /> -->
 <BottomNavigationMenu/>
@@ -49,21 +46,25 @@ const {title, description, pubDate} = Astro.props;
     h2 {
         font-weight: 700;
     }
+
     .my-2 {
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
     }
+
     .post-content__content :global(p) {
         font-size: 18px;
         margin-top: 1.25em;
         margin-bottom: 1.25em;
     }
+
     .breadcrumbs-section {
         width: 100%;
         display: flex;
         justify-content: flex-start;
         padding-top: 5vh;
     }
+
     .breadcrumbs-section a {
         display: flex;
         align-items: center;
@@ -73,6 +74,7 @@ const {title, description, pubDate} = Astro.props;
         cursor: pointer;
         margin: 0;
     }
+
     .breadcrumbs-section svg {
         display: inline-block;
         width: 1.5rem;

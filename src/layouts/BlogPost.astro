@@ -19,9 +19,7 @@ const {frontmatter: {title, description, pubDate, updatedDate, heroImage, curren
 ---
 
 <html lang="en">
-<head>
-    <BaseHead title={title} description={description} image={thumb ? thumb.src : heroImage.src} />
-</head>
+<BaseHead title={title} description={description} image={thumb ? thumb.src : heroImage.src}/>
 <body>
 <BottomNavigationMenu current=''/>
 <main>
@@ -165,6 +163,7 @@ const {frontmatter: {title, description, pubDate, updatedDate, heroImage, curren
         }
 
     }
+
     code,
     blockquote {
         word-wrap: break-word;
