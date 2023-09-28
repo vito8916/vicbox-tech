@@ -15,12 +15,12 @@ export interface Props {
     current?: string;
 }
 
-const {frontmatter: {title, description, pubDate, updatedDate, heroImage, current}} = Astro.props;
+const {frontmatter: {title, description, pubDate, updatedDate, heroImage, current, thumb}} = Astro.props;
 ---
 
 <html lang="en">
 <head>
-    <BaseHead title={title} description={description}/>
+    <BaseHead title={title} description={description} image={thumb} />
 </head>
 <body>
 <BottomNavigationMenu current=''/>
