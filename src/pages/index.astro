@@ -26,17 +26,19 @@ const latestPosts = (await getCollection('blog')).sort(
             <h2 class="title">Latest Posts</h2>
             <hr class="divider" />
         </div>
-        {
-            latestPosts < 1 ? "No posts found" :
-            latestPosts
-                .filter((i, index) => index < 4)
-                .map((post) => (
-                        <BlogPostListPreview
-                                data={post.data} url={post.slug}
-                                link={post.slug}
-                        />
-                ))
-        }
+        <div class="blog__post-list">
+            {
+                latestPosts < 1 ? "No posts found" :
+                    latestPosts
+                        .filter((i, index) => index < 4)
+                        .map((post) => (
+                                <BlogPostListPreview
+                                        data={post.data} url={post.slug}
+                                        link={post.slug}
+                                />
+                        ))
+            }
+        </div>
     </section>
     <section class="section load-more">
         <a href="/blog">

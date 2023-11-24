@@ -11,7 +11,7 @@ const posts = (await getCollection('blog')).sort(
 <PageLayout currentPage="blog">
     <section class="pt-2">
         <h1 class="section-title">All Articles</h1>
-        <div class="blog__post-grid-preview">
+        <div class="blog__post-grid-list">
             {posts.map((post) => <BlogPostGridPreview post={post} />)}
         </div>
     </section>
@@ -22,12 +22,11 @@ const posts = (await getCollection('blog')).sort(
         padding: 2rem 0;
         font-weight: 700;
     }
-    .blog__post-grid-preview {
+
+    .blog__post-grid-list {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(215px, 220px));
+        grid-template-columns: repeat(auto-fill, minmax(201px, 201px));
         align-items: center;
-        /*grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));*/
-        /* align-items: center; */
         padding: 24px 0;
         gap: 24px;
     }
@@ -38,6 +37,13 @@ const posts = (await getCollection('blog')).sort(
             font-weight: 700;
             margin-top: 0;
             font-size: clamp(2.67rem, 2.07rem + 3vw, 4.21rem);
+        }
+        .blog__post-grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 24px 0;
+            gap: 12px;
         }
     }
 </style>
