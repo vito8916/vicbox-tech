@@ -1,61 +1,19 @@
 ---
-import { getCollection } from "astro:content";
-
-//Components import
-import Hero from "../components/Hero.astro";
+//This is a temporary index file to test the functionality of the app
 import PageLayout from "../layouts/PageLayout.astro";
-import BlogPostListPreview from "../components/BlogPostListPreview.astro";
-import Button from "../components/Button.astro";
-
-//const allPost = await getCollection("blog");
-
-/*const latestPosts: CollectionEntry<"blog">[] = allPost.sort(
-    (a, b) =>
-        new Date(b.data.pubDate).valueOf() -
-        new Date(a.data.pubDate).valueOf()
-);*/
-
-const latestPosts = (await getCollection('blog')).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+import Logo from "../components/Logo.astro";
+import Isotipo from "../components/Isotipo.astro";
 ---
 
 <PageLayout currentPage="home">
-    <Hero />
-    <section class="section latest__posts">
-        <div class="section__title">
-            <h2 class="title">Latest Posts</h2>
-            <hr class="divider" />
-        </div>
-        <div class="blog__post-list">
-            {
-                latestPosts < 1 ? "No posts found" :
-                    latestPosts
-                        .filter((i, index) => index < 4)
-                        .map((post) => (
-                                <BlogPostListPreview
-                                        data={post.data} url={post.slug}
-                                        link={post.slug}
-                                />
-                        ))
-            }
-        </div>
-    </section>
-    <section class="section load-more">
-        <a href="/blog">
-            <Button
-                class="btn btn-solid dark-grey"
-                label="View All Blog"
-                title="view all blog button"
-            />
-        </a>
+    <section class="section">
+        <Isotipo width="50" height="50" />
+        <h1>
+            Welcome to Vicbox.tech
+        </h1>
+        <p class="mt-2">
+            I'm working to improve the functionality of this site to make it a better experience for you. Stay tuned for
+            updates.
+        </p>
     </section>
 </PageLayout>
-
-<style>
-    .load-more {
-        display: flex;
-        justify-content: center;
-        margin-top: 5rem;
-        color: var(--color-text);
-    }
-</style>

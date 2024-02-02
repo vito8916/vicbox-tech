@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+
+//Components import
+import Hero from "../components/Hero.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import BlogPostListPreview from "../components/BlogPostListPreview.astro";
+import Button from "../components/Button.astro";
+
+//const allPost = await getCollection("blog");
+
+/*const latestPosts: CollectionEntry<"blog">[] = allPost.sort(
+    (a, b) =>
+        new Date(b.data.pubDate).valueOf() -
+        new Date(a.data.pubDate).valueOf()
+);*/
+
+const latestPosts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+---
+
+<PageLayout currentPage="home">
+    <Hero />
+    <section class="section latest__posts">
+        <div class="section__title">
+            <h2 class="title">Latest Posts</h2>
+            <hr class="divider" />
+        </div>
+        <div class="blog__post-list">
+            {
+                latestPosts < 1 ? "No posts found" :
+                    latestPosts
+                        .filter((i, index) => index_2_temp < 4)
+                        .map((post) => (
+                                <BlogPostListPreview
+                                        data={post.data} url={post.slug}
+                                        link={post.slug}
+                                />
+                        ))
+            }
+        </div>
+    </section>
+    <section class="section load-more">
+        <a href="/blog">
+            <Button
+                class="btn btn-solid dark-grey"
+                label="View All Blog"
+                title="view all blog button"
+            />
+        </a>
+    </section>
+</PageLayout>
+
+<style>
+    .load-more {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+        color: var(--color-text);
+    }
+</style>
