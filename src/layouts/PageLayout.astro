@@ -10,13 +10,12 @@ const {currentPage} = Astro.props
 <html lang="en">
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
 <body>
-<!--<BottomNavigationMenu current={currentPage} title={SITE_TITLE}/>-->
-<!-- <Header current={currentPage} title={SITE_TITLE} /> -->
+<BottomNavigationMenu current={currentPage} title={SITE_TITLE}/>
 <main>
     <div class="container">
         <slot/>
     </div>
 </main>
+<Footer/>
 </body>
-<!--<Footer/>-->
 </html>
